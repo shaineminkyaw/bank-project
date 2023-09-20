@@ -17,7 +17,7 @@ pipeline {
 
         stage('build go') {
           steps {
-            sh 'go build && ls -la'
+            sh 'go build -o app main.go && ./app'
           }
         }
 
