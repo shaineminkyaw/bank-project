@@ -8,8 +8,19 @@ pipeline {
     }
 
     stage('logs') {
-      steps {
-        sh 'ls -la'
+      parallel {
+        stage('logs') {
+          steps {
+            sh 'ls -la'
+          }
+        }
+
+        stage('build go') {
+          steps {
+            sh 'go build && ls -la'
+          }
+        }
+
       }
     }
 
